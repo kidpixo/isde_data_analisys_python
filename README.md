@@ -15,13 +15,19 @@ Output :
 
 **Data visualization**
 ![](https://dl.dropboxusercontent.com/u/4762299/github_img/isde_data_analisys_python/XYZ_data_plot.png)
+Color and Size = magnitude
 
 **Kernel PCA reconstructed data**
 ![](https://dl.dropboxusercontent.com/u/4762299/github_img/isde_data_analisys_python/KPCA_reconstructed.png)
+Color and Size = magnitude
 
-** PCA components **
+The data are clearly confined in only 2 components.
+
+**PCA components**
 ![](https://dl.dropboxusercontent.com/u/4762299/github_img/isde_data_analisys_python/PCA_components.png)
+Color and Size = magnitude
 
-
-** Classification on lat,lon,prof with k-means **
+**Classification on lat,lon,prof with k-means**
 ![](https://dl.dropboxusercontent.com/u/4762299/github_img/isde_data_analisys_python/kmeans_classes.png)
+Color = class label based on (lat,lon,prof)
+Size = magnitude
