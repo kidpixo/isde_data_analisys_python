@@ -9,7 +9,9 @@ My first attempt to analyze data from [Italian Seismological Instrumental and Pa
 
 ## How to use it
 
-first of all download the data from [ISIDE](http://iside.rm.ingv.it/) and adapt the path in the `.py` file or use the data I put in the repository [here](https://raw2.github.com/kidpixo/isde_data_analisys_python/master/events.csv)
+First of all download the data from [ISIDE](http://iside.rm.ingv.it/) and adapt the path in the `.py` file or use the data I put in the repository [here](https://raw2.github.com/kidpixo/isde_data_analisys_python/master/events.csv)
+
+**COPYRIGHT NOTICE:** © ISIDe Working Group (INGV, 2010), Italian Seismological Instrumental and parametric database: http://iside.rm.ingv.it
 
 Output :
 
