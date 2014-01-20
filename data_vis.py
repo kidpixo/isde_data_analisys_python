@@ -1,4 +1,3 @@
-# import scipy.misc as misc
 import numpy as np
 import pylab as plt
 import pandas as pd
@@ -9,7 +8,7 @@ from sklearn.decomposition import PCA, KernelPCA
 
 path = '/Users/damo_ma/Dropbox/work/python/isde/'
 
-df = pd.read_csv(path+'events_total.csv', header=None,sep=';',skiprows=6,names=['lat','lon','prof','mag','fonte','empty'])
+df = pd.read_csv(path+'events.csv', header=None,sep=';',skiprows=6,names=['lat','lon','prof','mag','fonte','empty'])
 
 small_df = df #[df.mag > 2]
 
@@ -18,6 +17,10 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(small_df.lon.values, small_df.lat.values, small_df.prof.values, c=small_df.mag.values, s=15*small_df.mag.values, marker='o',cmap=plt.cm.RdYlBu_r)
 ax.set_zlim3d(small_df.prof.max(),small_df.prof.min())
+
+ax.set_xticks(np.linspace(ax.get_xlim()[0],ax.get_xlim()[1],4))
+ax.set_yticks(np.linspace(ax.get_ylim()[0],ax.get_ylim()[1],4))
+ax.set_zticks(np.arange(small_df.prof.min().astype('int'),small_df.prof.max().astype('int')+1,10))
 
 ax.set_xlabel('Lon')
 ax.set_ylabel('Lat')
@@ -35,11 +38,15 @@ small_data_kpca_back = kpca.inverse_transform(small_data_kpca)
 small_data_kpca.shape,small_data_kpca_back.shape
 
 
-plt.title("KernelPCA reconstructed data")
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(small_data_kpca_back[:,0], small_data_kpca_back[:,1], small_data_kpca_back[:,2], c=small_df.mag.values, s=15*small_df.mag.values, marker='o',cmap=plt.cm.RdYlBu_r)
 ax.set_zlim3d(small_df.prof.max(),small_df.prof.min())
+ax.set_xticks(np.linspace(ax.get_xlim()[0],ax.get_xlim()[1],4))
+ax.set_yticks(np.linspace(ax.get_ylim()[0],ax.get_ylim()[1],4))
+ax.set_zticks(np.arange(small_df.prof.min().astype('int'),small_df.prof.max().astype('int')+1,10))
+
+plt.title("KernelPCA reconstructed data")
 
 
 pca = PCA(n_components = 'mle')
@@ -68,7 +75,7 @@ plt.ylabel('PCA 2nd component')
 
 
 # classification 
-n_clusters = 2 # how many classes? 
+n_clusters = 3 # how many classes? 
 
 # generate classifier object
 k_means = cluster.KMeans(n_clusters=n_clusters)
@@ -80,8 +87,11 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(small_df.lon.values, small_df.lat.values, small_df.prof.values, c=k_means.labels_, s=15*small_df.mag.values, marker='o',cmap=plt.cm.RdYlBu_r)
 ax.set_zlim3d(small_df.prof.max(),small_df.prof.min())
+ax.set_xticks(np.linspace(ax.get_xlim()[0],ax.get_xlim()[1],4))
+ax.set_yticks(np.linspace(ax.get_ylim()[0],ax.get_ylim()[1],4))
+ax.set_zticks(np.arange(small_df.prof.min().astype('int'),small_df.prof.max().astype('int')+1,10))
 
-ax.axis([small_df.lon.min(),small_df.lon.max(),small_df.lat.min(),small_df.lat.max()])
+
 
 ax.set_xlabel('Lon')
 ax.set_ylabel('Lat')
