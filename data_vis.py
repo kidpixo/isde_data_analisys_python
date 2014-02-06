@@ -25,6 +25,7 @@ ax.set_zticks(np.arange(small_df.prof.min().astype('int'),small_df.prof.max().as
 ax.set_xlabel('Lon')
 ax.set_ylabel('Lat')
 ax.set_zlabel('Prof')
+plt.show()
 
 # analysis
 class_data_index = [0,1,2] # which column from the data frame?
@@ -47,7 +48,7 @@ ax.set_yticks(np.linspace(ax.get_ylim()[0],ax.get_ylim()[1],4))
 ax.set_zticks(np.arange(small_df.prof.min().astype('int'),small_df.prof.max().astype('int')+1,10))
 
 plt.title("KernelPCA reconstructed data")
-
+plt.show()
 
 pca = PCA(n_components = 'mle')
 pca.fit(small_data)
@@ -64,7 +65,7 @@ plt.title("PCA explained variance")
 plt.plot(np.arange(pca.explained_variance_ratio_.size),pca.explained_variance_ratio_)
 plt.plot(np.arange(pca.explained_variance_ratio_.size),pca.explained_variance_ratio_, "r.")
 ax.set_yscale('log')
-
+plt.show()
 
 plt.figure()
 plt.title("PCA Projected data")
@@ -72,7 +73,7 @@ plt.scatter(small_data_pca[:,0], small_data_pca[:,1], s=15*small_df.mag.values, 
 
 plt.xlabel('PCA 1st component')
 plt.ylabel('PCA 2nd component')
-
+plt.show()
 
 # classification 
 n_clusters = 3 # how many classes? 
@@ -91,9 +92,8 @@ ax.set_xticks(np.linspace(ax.get_xlim()[0],ax.get_xlim()[1],4))
 ax.set_yticks(np.linspace(ax.get_ylim()[0],ax.get_ylim()[1],4))
 ax.set_zticks(np.arange(small_df.prof.min().astype('int'),small_df.prof.max().astype('int')+1,10))
 
-
-
 ax.set_xlabel('Lon')
 ax.set_ylabel('Lat')
 ax.set_zlabel('Prof')
 
+plt.show()
